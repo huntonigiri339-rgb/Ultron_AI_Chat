@@ -29,6 +29,7 @@ npm start
 ```
 
 Open <http://localhost:3000> in a browser.
+Open https://gemini.google.com/share/62c7ff0f09a7?social_preview=false&skid=1d86a4a7-fb07-418a-8e5a-93b8f8915290 as a preview or prototype.
 
 Useful checks:
 
