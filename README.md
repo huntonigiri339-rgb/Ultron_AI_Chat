@@ -39,7 +39,7 @@ Then open http://localhost:3000 in your browser.
 | `app.js` | Rule engine, conversation state, token estimate, rendering, and learning interactions. |
 | `server.js` | Small static Node server for local development. |
 | `llm-client.example.js` | Commented OpenAI-compatible chat-completions example for the next step. |
-| `manus-routes.json` | Route manifest used by the managed preview environment. |
+| `model-routes.json` | Route manifest used by the managed preview environment. |
 | `app.config.ts` | Project branding metadata. |
 | `docs/ARCHITECTURE.md` | Request-to-reply data flow and extension points. |
 | `docs/LLM-INTEGRATION.md` | Safe server-side integration guide and request contract. |
