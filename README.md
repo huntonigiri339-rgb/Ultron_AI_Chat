@@ -22,20 +22,15 @@ The playground includes a working rule-based chat mode, visible conversation his
 
 Requirements: Node.js 18 or newer. No package installation is required.
 
+
 ```bash
 git clone https://github.com/huntonigiri339-rgb/Ultron_AI_Chat.git
 cd Ultron_AI_Chat
-npm start
+npm install
+npm run dev
 ```
 
-Open <http://localhost:3000> in a browser.
-
-Useful checks:
-
-```bash
-npm run check
-curl http://localhost:3000/manus-routes.json
-```
+Then open http://localhost:3000 in your browser.
 
 ## Project map
 
