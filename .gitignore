@@ -7,3 +7,5 @@ npm-debug.log*
 *.log
 .vscode/
 .idea/
+git-filter-repo.py
+make_notebook.py
