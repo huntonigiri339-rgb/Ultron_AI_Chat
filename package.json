@@ -4,6 +4,7 @@
   "private": true,
   "description": "A small, commented rule-based chatbot that teaches AI basics.",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "check": "node --check server.js && node --check app.js && node --check llm-client.example.js"
   }
 }
