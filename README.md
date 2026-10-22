@@ -76,4 +76,4 @@ The code favors browser APIs and plain JavaScript so a learner can open the file
 
 ## License
 
-This project is provided as an educational starter. Add the license that best fits your intended reuse before distributing it as a library or product.
+This project is provided as an educational starter With MIT License.
