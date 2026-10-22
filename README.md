@@ -20,8 +20,6 @@ The playground includes a working rule-based chat mode, visible conversation his
 
 ## Run locally
 
-Requirements: Node.js 18 or newer. No package installation is required.
-
 
 ```bash
 git clone https://github.com/huntonigiri339-rgb/Ultron_AI_Chat.git
