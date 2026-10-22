@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A hands-on lesson about AI basics through a tiny chatbot." />
+    <title>AI Basics Chatbot Lab</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="wordmark" href="/" aria-label="AI Basics Chatbot Lab home">
+          <span class="wordmark-mark">AI</span>
+          <span>Chatbot Lab</span>
+        </a>
+        <div class="topbar-note"><span class="status-dot"></span> local-first lesson</div>
+      </header>
+
+      <main>
+        <section class="intro-section" aria-labelledby="page-title">
+          <div class="intro-copy">
+            <p class="eyebrow">LESSON 01 / BUILD THE MENTAL MODEL</p>
+            <h1 id="page-title">A tiny chatbot is a<br /><em>great place to start.</em></h1>
+            <p class="intro-text">Try a transparent keyword bot, then peek behind the curtain at the same conversation shaped for a language model.</p>
+          </div>
+          <div class="intro-card">
+            <span class="intro-card-label">What you are learning</span>
+            <strong>Input → logic → reply</strong>
+            <span>Every part is visible, so you can change it.</span>
+          </div>
+        </section>
+
+        <section class="workspace" aria-label="Chatbot playground">
+          <div class="chat-panel panel">
+            <div class="panel-heading">
+              <div>
+                <p class="section-kicker">PLAYGROUND</p>
+                <h2>Talk to the bot</h2>
+              </div>
+              <button class="reset-button" id="reset-chat" type="button">Reset chat</button>
+            </div>
+
+            <div class="mode-switch" role="tablist" aria-label="Chatbot mode">
+              <button class="mode-button active" data-mode="rules" role="tab" aria-selected="true" type="button">Rule-based</button>
+              <button class="mode-button" data-mode="model" role="tab" aria-selected="false" type="button">Model-shaped</button>
+            </div>
+
+            <div class="mode-note" id="mode-note">
+              <span class="mode-note-icon">01</span>
+              <span><strong>Rule-based mode:</strong> type a message and the bot scans its rules for keywords. Nothing is hidden.</span>
+            </div>
+
+            <div class="messages" id="messages" aria-live="polite" aria-label="Conversation"></div>
+
+            <form class="chat-form" id="chat-form">
+              <label class="sr-only" for="message-input">Your message</label>
+              <input id="message-input" name="message" autocomplete="off" placeholder="Try: “What is a token?”" />
+              <button class="send-button" type="submit"><span>Send</span><span aria-hidden="true">↗</span></button>
+            </form>
+            <div class="suggestions" aria-label="Suggested messages">
+              <button type="button" data-suggestion="hello">Say hello</button>
+              <button type="button" data-suggestion="What is a token?">What is a token?</button>
+              <button type="button" data-suggestion="Why can AI make things up?">Why hallucinations?</button>
+            </div>
+          </div>
+
+          <aside class="context-panel panel" aria-label="Conversation context">
+            <div class="panel-heading compact">
+              <div>
+                <p class="section-kicker">UNDER THE HOOD</p>
+                <h2>What the code sees</h2>
+              </div>
+              <span class="live-badge">LIVE</span>
+            </div>
+            <p class="panel-subtitle">This is the <code>conversation</code> array: the memory your app chooses to send.</p>
+            <div class="context-stats">
+              <div><strong id="turn-count">1</strong><span>turns</span></div>
+              <div><strong id="token-count">~18</strong><span>tokens*</span></div>
+            </div>
+            <div class="context-code" id="context-code" aria-label="Conversation context code"></div>
+            <p class="tiny-note">*A rough word-based estimate for learning. Real tokenizers split text differently.</p>
+          </aside>
+        </section>
+
+        <section class="lesson-section" aria-labelledby="lesson-title">
+          <div class="section-title-row">
+            <div>
+              <p class="section-kicker">THE SHORT VERSION</p>
+              <h2 id="lesson-title">Five ideas, connected to the code</h2>
+            </div>
+            <p class="section-aside">Read one, change the code, then try it in the chat.</p>
+          </div>
+
+          <div class="concept-grid">
+            <article class="concept-card">
+              <span class="concept-number">01</span>
+              <h3>What is a language model?</h3>
+              <p>A model predicts likely next pieces of text from patterns learned during training. It is not a search engine or a database of guaranteed facts.</p>
+              <code>reply = model(messages)</code>
+            </article>
+            <article class="concept-card accent-card">
+              <span class="concept-number">02</span>
+              <h3>Prompt vs. system instruction</h3>
+              <p>Your prompt is the task you ask for. A system instruction is the higher-level behavior you set first, such as “be a patient tutor.”</p>
+              <code>role: "system"</code>
+            </article>
+            <article class="concept-card">
+              <span class="concept-number">03</span>
+              <h3>Tokens</h3>
+              <p>Models read text as tokens: small chunks of words or characters. More tokens usually means more context and more compute.</p>
+              <code>estimateTokens(text)</code>
+            </article>
+            <article class="concept-card">
+              <span class="concept-number">04</span>
+              <h3>Context across turns</h3>
+              <p>The model does not automatically remember this chat. Your app sends earlier user and assistant messages again in <code>conversation</code>.</p>
+              <code>...conversation</code>
+            </article>
+            <article class="concept-card warning-card">
+              <span class="concept-number">05</span>
+              <h3>Why can it make things up?</h3>
+              <p>Because it generates plausible language, it can sound confident while being wrong. Add a knowledge source, citations, and an “I’m not sure” path.</p>
+              <code>if (!sure) say_so</code>
+            </article>
+          </div>
+        </section>
+
+        <section class="connection-section panel" aria-labelledby="connection-title">
+          <div class="connection-copy">
+            <p class="section-kicker">NEXT LAYER</p>
+            <h2 id="connection-title">Same interface, different engine</h2>
+            <p>In a real app, the input form can call your server. The server adds a system instruction, forwards the conversation to a model, and returns the generated text. The demo below shows the request shape without asking you for a secret key.</p>
+            <div class="connection-flow" aria-label="Language model request flow">
+              <span>browser</span><b>→</b><span>your server</span><b>→</b><span>language model</span>
+            </div>
+            <p class="safety-note"><strong>Why a server?</strong> API keys belong on the server, not in browser code that anyone can inspect.</p>
+          </div>
+          <div class="code-window">
+            <div class="code-window-bar"><span></span><span></span><span></span><em>llm-client.example.js</em></div>
+            <pre id="llm-code"></pre>
+          </div>
+        </section>
+
+        <section class="next-steps" aria-labelledby="next-title">
+          <div>
+            <p class="section-kicker">KEEP GOING</p>
+            <h2 id="next-title">Two friendly upgrades</h2>
+          </div>
+          <div class="next-step-list">
+            <article><span>→</span><div><h3>Give it a persona</h3><p>Change <code>SYSTEM_INSTRUCTION</code> to make it a patient tutor, a concise coach, or a playful study buddy.</p></div></article>
+            <article><span>→</span><div><h3>Add its own knowledge source</h3><p>Put trusted notes or documents in a small search step, then give the relevant excerpts to the model as context.</p></div></article>
+          </div>
+          <div class="comfort-check">
+            <div><span class="check-mark">?</span><div><strong>How comfortable are you with coding?</strong><p>Your answer can shape the next lesson: we can stay visual and simple, or go deeper into JavaScript and APIs.</p></div></div>
+            <div class="comfort-buttons" role="group" aria-label="Coding comfort">
+              <button type="button" data-comfort="new">New to coding</button>
+              <button type="button" data-comfort="some">I know a little</button>
+              <button type="button" data-comfort="comfortable">Pretty comfortable</button>
+            </div>
+            <p class="comfort-response" id="comfort-response" aria-live="polite"></p>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer"><span>AI Basics Chatbot Lab</span><span>Built to be read, changed, and understood.</span></footer>
+    </div>
+    <script src="/app.js" defer></script>
+  </body>
+</html>

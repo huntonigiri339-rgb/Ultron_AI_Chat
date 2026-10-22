@@ -1,0 +1,9 @@
+{
+  "name": "ai-basics-chatbot-lab",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A small, commented rule-based chatbot that teaches AI basics.",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
